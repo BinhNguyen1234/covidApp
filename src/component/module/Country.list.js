@@ -26,7 +26,7 @@ function reducer(state, actions){
             return {...state,isLoading: false,isCaching: true}
         }
         case "RELOAD":{
-            return {...state,reload: state.reload?false:true}
+            return {...state,isLoading: true,reload: state.reload?false:true}
         }
         default :{
             return {...state}
