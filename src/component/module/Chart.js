@@ -9,7 +9,8 @@ export default function Chart({CVData,data}){
             enabled: false
           },
         title: {
-          text: `${data.Country}`
+          text: `${data.Country}`,
+          style: {"color": "red"}
         },
         chart:{
             type: "pie",

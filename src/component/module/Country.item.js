@@ -1,5 +1,5 @@
 
-import CountryPopup from "./Country.popup"
+import CountryPopup from "./Country.PopupBtn"
 import Style from "../../style/Country.module.sass"
 export default function CountryItem({filter,dataCountry}){
     return <>

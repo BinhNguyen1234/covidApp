@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react"
-import { DataContext } from "./Country.popup"
+import { DataContext } from "./Country.PopupBtn.js"
 import Style from "../../style/Country.module.sass"
 import axios from "axios"
 import Chart from "./Chart"
 //https://restcountries.com/v2/alpha/{code}
-export default function Unknown({code,CVData}){
+export default function Popup({code,CVData}){
 
     const {state,setState} = useContext(DataContext)
     const [data,setData]= useState({

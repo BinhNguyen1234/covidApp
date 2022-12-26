@@ -1,6 +1,6 @@
 import { createContext, useState } from "react"
 import Style from "../../style/Country.module.sass"
-import Unknown from "./Country.unknow"
+import Popup from "./Country.Popup"
 const DataContext = createContext({
     isCicked: false
 })
@@ -11,7 +11,7 @@ export default function CountryPopup({children, CVData,code}){
             <div id={Style.Popup} onClick={(event)=>{setState(true)}}>
                 {children}
            </div>
-           <Unknown CVData={CVData} code={code}></Unknown>
+           <Popup CVData={CVData} code={code}></Popup>
     </DataContext.Provider>
     </>
 }
