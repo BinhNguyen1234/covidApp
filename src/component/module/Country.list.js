@@ -6,7 +6,7 @@ import Style from "../../style/Country.module.sass"
 function reducer(state, actions){
     switch(actions.type){
         case "SETDATA":{
-            return {...state,isLoading: false,data: actions.payload.data,displayData :actions.payload.data}
+            return {...state,isCaching: false,isLoading: false,data: actions.payload.data,displayData :actions.payload.data}
         }
         case "SORTING":{
             state.displayData.sort((a,b)=>{return state.AtoZ ? b[state.filter] - a[state.filter] : a[state.filter] - b[state.filter]})
@@ -21,6 +21,9 @@ function reducer(state, actions){
         }
         case "TOGGLEDROPDOWN": {
             return {...state, isDropDownShow: state.isDropDownShow?false:true}
+        }
+        case "CACHING":{
+            return {...state,isLoading: false,isCaching: true}
         }
         default :{
             return {...state}
@@ -37,7 +40,8 @@ export default function CountryList(){
         isLoading: true,
         data: [],
         displayData: [],
-        isDropDownShow: false
+        isDropDownShow: false,
+        isCaching: false
     })
     
     useEffect(()=>{
@@ -48,7 +52,8 @@ export default function CountryList(){
         }).then((response)=>{
             dispatch({type: "SETDATA", payload:{data: response.data.Countries || []}})
             if(response.data.Message){
-                dispatch({type: "SETDATA", payload:{data:[{Country: "Caching data processing, please try few minutes later"}]  || []}})
+                dispatch({type: "CACHING"})
+                alert("API Covid Service is Caching, this will take a few minutes, please try later")
             }
         })
         .catch((e)=>{
@@ -60,7 +65,11 @@ export default function CountryList(){
 
     return <>
         <CountrySearchBar filter={state.filter} dispatch={dispatch} showDropDown={state.isDropDownShow} AtoZ={state.AtoZ}></CountrySearchBar>
-        {state.isLoading?<div style={{"width": "200px",margin: "4em"}} className="spinner"></div>:<ul id={Style.List}>
+        {state.isLoading?<div style={{"width": "200px",margin: "4em"}} className="spinner"></div>:state.isCaching?
+        <div style={{"display": "flex","justifyContent": "space-between","align-items":"center","flex-direction":"column","width":"100%"}}>
+            <div>API Covid Service is Caching, this will take a few minutes, please try later</div>
+            <button onClick={()=>{window.location.reload()}}>Refresh Page</button>
+        </div>:<ul id={Style.List}>
             <div  style={{"display": "flex","justifyContent": "space-between"}}>
                 <div>Country</div>
                 <hr style={{width: "1px", height: "100%"}}></hr>

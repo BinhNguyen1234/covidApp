@@ -35,6 +35,7 @@ export default function Chart({CVData,data}){
               showInLegend: true
             }
           },
+          spacing: [0,0,0,0],
         series: [{
             name: 'Percentage',
             colorByPoint: true,
