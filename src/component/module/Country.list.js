@@ -47,7 +47,11 @@ export default function CountryList(){
         isCaching: false,
         reload: false
     })
-    
+    useEffect(()=>{
+        if(state.filter == "TotalRecovered"){
+            alert("It's look like the number Recovered was be delete and will be not updated anymore, so the app will show 0 for this filter ")
+        }
+    },[state.filter])
     useEffect(()=>{
         //TotalConfirmed,TotalDeaths,TotalRecovered
         axios({
