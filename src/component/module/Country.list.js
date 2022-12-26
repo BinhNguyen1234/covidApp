@@ -19,9 +19,9 @@ function reducer(state, actions){
              let searchData = state.data.filter((value)=>{return value.Country.search(new RegExp(`${actions.payload.keySearch}(.*)`, 'gmius'))>=0})
             return {...state, displayData : searchData}
         }
-         case "TOGGLEDROPDOWN": {
+        case "TOGGLEDROPDOWN": {
             return {...state, isDropDownShow: state.isDropDownShow?false:true}
-         }
+        }
         default :{
             return {...state}
         }
@@ -54,6 +54,7 @@ export default function CountryList(){
         .catch((e)=>{
             alert(e)
         })
+            return
 
     },[])
 

@@ -29,7 +29,7 @@ export default function Unknown({code,CVData}){
         }).catch((e)=>[
             console.log(e)
         ])}
-        else {
+        return ()=>{
             setData({
                 isLoading: true,
                 name: "",
