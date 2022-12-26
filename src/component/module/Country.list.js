@@ -25,6 +25,9 @@ function reducer(state, actions){
         case "CACHING":{
             return {...state,isLoading: false,isCaching: true}
         }
+        case "RELOAD":{
+            return {...state,reload: state.reload?false:true}
+        }
         default :{
             return {...state}
         }
@@ -41,7 +44,8 @@ export default function CountryList(){
         data: [],
         displayData: [],
         isDropDownShow: false,
-        isCaching: false
+        isCaching: false,
+        reload: false
     })
     
     useEffect(()=>{
@@ -61,14 +65,14 @@ export default function CountryList(){
         })
             return
 
-    },[])
+    },[state.reload])
 
     return <>
         <CountrySearchBar filter={state.filter} dispatch={dispatch} showDropDown={state.isDropDownShow} AtoZ={state.AtoZ}></CountrySearchBar>
         {state.isLoading?<div style={{"width": "200px",margin: "4em"}} className="spinner"></div>:state.isCaching?
         <div style={{"display": "flex","justifyContent": "space-between","align-items":"center","flex-direction":"column","width":"100%"}}>
             <div>API Covid Service is Caching, this will take a few minutes, please try later</div>
-            <button onClick={()=>{window.location.reload()}}>Refresh Page</button>
+            <button onClick={()=>{dispatch({type: "RELOAD"})}}>Refresh Page</button>
         </div>:<ul id={Style.List}>
             <div  style={{"display": "flex","justifyContent": "space-between"}}>
                 <div>Country</div>
