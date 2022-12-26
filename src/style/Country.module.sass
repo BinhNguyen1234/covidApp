@@ -5,8 +5,15 @@
     flex-wrap: wrap
     width: 50%
     >input
+        font-size: 16px
         line-height: 2em
         width: 70%
+        &:invalid
+            border-left: 5px solid red
+        &:valid
+            border-left: 5px solid green
+        &:placeholder-shown
+            border-left:  2px solid  black
     >div
         display: flex
 
@@ -18,7 +25,7 @@
             min-width: 55px
             aspect-ratio: 1.2/1
             
-    
+ 
         
      
 #Popup
@@ -62,6 +69,11 @@
     > li
         margin-bottom: 2px
         list-style: none
+        &:hover
+            outline-color: black
+            outline-width: 1px
+            outline-style: solid
+            outline-offset: 2px
         > div
             > div
                 &:first-child

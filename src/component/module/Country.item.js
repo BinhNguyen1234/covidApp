@@ -1,8 +1,9 @@
 
 import CountryPopup from "./Country.popup"
+import Style from "../../style/Country.module.sass"
 export default function CountryItem({filter,dataCountry}){
     return <>
-        <li >
+        <li id={Style.Item}>
             <div style={{"display": "flex","justifyContent": "space-between"}}>
                 <CountryPopup CVData={{
                     TotalConfirmed: dataCountry.TotalConfirmed || 0,

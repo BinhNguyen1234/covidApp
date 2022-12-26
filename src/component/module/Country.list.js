@@ -59,7 +59,7 @@ export default function CountryList(){
 
     return <>
         <CountrySearchBar filter={state.filter} dispatch={dispatch} showDropDown={state.isDropDownShow} AtoZ={state.AtoZ}></CountrySearchBar>
-        {state.isLoading?"Waiting":<ul id={Style.List}>
+        {state.isLoading?<div style={{"width": "200px",margin: "4em"}} className="spinner"></div>:<ul id={Style.List}>
             <div  style={{"display": "flex","justifyContent": "space-between"}}>
                 <div>Country</div>
                 <hr style={{width: "1px", height: "100%"}}></hr>

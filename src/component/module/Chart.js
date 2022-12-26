@@ -9,12 +9,11 @@ export default function Chart({CVData,data}){
             enabled: false
           },
         title: {
-          text: `${data.Country}`,
-          style: {"color": "red"}
+          text: `${data.Country}`
         },
         chart:{
             type: "pie",
-            spacing: [0,0,0,0]
+            
         },
         colors: ['#3d8bfd', '#e35d6a'],
         tooltip: {

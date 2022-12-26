@@ -3,7 +3,7 @@ import SearchBarDropDown from "./SearchBar.dropdown.filter"
 export default function CountrySearchBar({AtoZ, showDropDown,filter ,dispatch}){
     return <>
        <form  onSubmit={e=>e.preventDefault()} id={Style.SearchBar}>
-            <input placeholder="Enter country for searching" onChange={(e)=>{
+            <input  type="search" placeholder="Enter country for searching" onChange={(e)=>{
                 const invalid = /[°"§%()\[\]{}=\\?´`'#<>|,;.:+_-]+/g;
                 const target = e.target
                 const valid = target.value.replace(invalid,"")
